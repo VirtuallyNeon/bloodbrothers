@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Hair Look Book</title>
+  <meta
+    name="description"
+    content="Hair Look Book — an editorial collection of hair looks."
+  />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+    :root {
+      --black: #0b0b0b;
+      --cream: #eeeae2;
+      --white: #f7f6f2;
+      --gray: #8e8b85;
+      --line: rgba(11, 11, 11, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      mix-blend-mode: multiply;
+    }
+
+    .logo {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: opacity 0.25s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.45;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding: 110px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 35px;
+    }
+
+    .hero-title {
+      max-width: 1200px;
+      font-size: clamp(72px, 15vw, 220px);
+      line-height: 0.82;
+      letter-spacing: -0.075em;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-top: 100px;
+    }
+
+    .intro {
+      max-width: 420px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .scroll-label {
+      text-align: right;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* PDF SECTION */
+
+    .lookbook {
+      background: var(--black);
+      color: var(--white);
+      padding: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section-number {
+      color: #777;
+      font-size: 10px;
+    }
+
+    .pdf-wrapper {
+      width: 100%;
+      height: 82vh;
+      min-height: 600px;
+      background: #222;
+      overflow: hidden;
+    }
+
+    .pdf-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .pdf-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+    }
+
+    .pdf-note {
+      color: #777;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.45);
+      color: white;
+      padding: 13px 18px;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition:
+        background 0.25s ease,
+        color 0.25s ease;
+    }
+
+    .button:hover {
+      background: white;
+      color: black;
+    }
+
+    /* INFO */
+
+    .info {
+      min-height: 70vh;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+    }
+
+    .info-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .info-copy {
+      max-width: 800px;
+      font-size: clamp(28px, 4vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin: 0 28px;
+      padding: 20px 0 28px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+      header {
+        padding: 18px;
+      }
+
+      nav {
+        gap: 15px;
+      }
+
+      .hero {
+        padding: 100px 18px 18px;
+      }
+
+      .hero-title {
+        font-size: clamp(60px, 20vw, 130px);
+      }
+
+      .hero-bottom {
+        grid-template-columns: 1fr;
+        margin-top: 80px;
+      }
+
+      .scroll-label {
+        text-align: left;
+      }
+
+      .lookbook {
+        padding: 18px;
+      }
+
+      .pdf-wrapper {
+        height: 70vh;
+        min-height: 450px;
+      }
+
+      .pdf-actions {
+        gap: 20px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .info {
+        padding: 18px;
+        grid-template-columns: 1fr;
+        min-height: 60vh;
+      }
+
+      footer {
+        margin: 0 18px;
+        gap: 20px;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <a href="#" class="logo">Hair Look Book</a>
+
+    <nav>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#about">Info</a>
+    </nav>
+  </header>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Hair / Visual Archive / 001</div>
+
+        <h1 class="hero-title">
+          Hair<br>
+          Look<br>
+          Book
+        </h1>
+      </div>
+
+      <div class="hero-bottom">
+        <p class="intro">
+          A curated collection of hair references, shapes,
+          textures and styling directions.
+        </p>
+
+        <div class="scroll-label">
+          Scroll to explore ↓
+        </div>
+      </div>
+    </section>
+
+
+    <!-- LOOKBOOK -->
+    <section class="lookbook" id="lookbook">
+
+      <div class="section-header">
+        <div class="section-title">01 — Lookbook</div>
+        <div class="section-number">PDF / Archive</div>
+      </div>
+
+      <div class="pdf-wrapper">
+        <iframe
+          src="Hair%20Look%20Book.pdf#toolbar=0&navpanes=0&scrollbar=1"
+          title="Hair Look Book PDF">
+        </iframe>
+      </div>
+
+      <div class="pdf-actions">
+        <div class="pdf-note">
+          Hair Look Book / Full Collection
+        </div>
+
+        <a
+          class="button"
+          href="Hair%20Look%20Book.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          Open Full Lookbook ↗
+        </a>
+      </div>
+
+    </section>
+
+
+    <!-- INFO -->
+    <section class="info" id="about">
+
+      <div class="info-label">
+        02 — About
+      </div>
+
+      <div class="info-copy">
+        A visual reference for creating,
+        collecting and exploring hair.
+        <br><br>
+        Shape. Texture. Movement.
+        Attitude.
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <span>Hair Look Book</span>
+    <span>© 2026</span>
+  </footer>
+
+</body>
+</html>
